@@ -1,0 +1,28 @@
+name: Build commit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Select Xcode 12
+        run: sudo xcode-select -s /Applications/Xcode_12.app
+
+      - name: Build
+        run: make
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.0
+        with:
+          # Artifact name
+          name: "SoulverCore-${{ github.sha }}.alfredworkflow"
+          # A file, directory or wildcard pattern that describes what to upload
+          path: .build/SoulverCore.alfredworkflow
