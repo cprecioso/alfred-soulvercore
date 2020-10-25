@@ -5,7 +5,6 @@
 //  Created by Carlos Precioso on 21/10/2020.
 //
 
-import Cocoa
 import SoulverCore
 
 print(calc() ?? "")
