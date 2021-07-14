@@ -7,7 +7,12 @@
 
 import SoulverCore
 
-print(calc() ?? "")
+refreshIfNeeded {
+  print(calc() ?? "")
+  exit(0)
+}
+
+RunLoop.current.run()
 
 func calc() -> String? {
   let input = CommandLine.arguments.dropFirst().joined(separator: " ")
