@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
   name: "alfred-soulvercore",
   platforms: [.macOS(.v10_15)],
+  products: [.executable(name: "alfred-soulvercore", targets: ["alfred-soulvercore"])],
   dependencies: [
     .package(url: "https://github.com/soulverteam/SoulverCore", from: "1.4.0")
   ],
