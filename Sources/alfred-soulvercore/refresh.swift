@@ -37,7 +37,9 @@ func loadData() -> Date {
 
 func saveData() {
   if let url = CurrencyDataURL,
-     (try? FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)) != nil {
+    (try? FileManager.default.createDirectory(
+      at: url.deletingLastPathComponent(), withIntermediateDirectories: true)) != nil
+  {
     CurrencyList.shared.saveCurrenciesTo(url: url)
     userDefaults.set(Date(), forKey: LastRefreshKey)
   }
