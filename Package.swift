@@ -8,7 +8,7 @@ let package = Package(
   platforms: [.macOS(.v10_15)],
   products: [.executable(name: "alfred-soulvercore", targets: ["alfred-soulvercore"])],
   dependencies: [
-    .package(url: "https://github.com/soulverteam/SoulverCore", from: "1.4.0")
+    .package(url: "https://github.com/soulverteam/SoulverCore", from: "1.4.5")
   ],
   targets: [
     .target(
