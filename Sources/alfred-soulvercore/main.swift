@@ -1,20 +1,14 @@
-//
-//  main.swift
-//  alfred-soulvercore
-//
-//  Created by Carlos Precioso on 21/10/2020.
-//
-
 import SoulverCore
 
-refreshIfNeeded {
-  print(calc() ?? "")
+Task {
+  try await CurrencyRefresher.shared.refreshIfNeeded()
+  print(calc())
   exit(0)
 }
 
 RunLoop.current.run()
 
-func calc() -> String? {
+func calc() -> String {
   let input = CommandLine.arguments.dropFirst().joined(separator: " ")
   let calculator = Calculator(customization: .standard)
   let result = calculator.calculate(input).stringValue
@@ -39,7 +33,7 @@ func calc() -> String? {
     rerun: nil,
     variables: nil)
 
-  guard let data = try? JSONEncoder().encode(alfredResult) else { return nil }
+  let data = try! JSONEncoder().encode(alfredResult)
 
-  return String(data: data, encoding: .utf8)
+  return String(data: data, encoding: .utf8)!
 }
